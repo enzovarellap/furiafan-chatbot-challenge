@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FURIA Fan Chat</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/furia-logo.png">
+    <link rel="apple-touch-icon" href="/images/furia-logo.png">
+    <link rel="shortcut icon" href="/images/furia-logo.png">
+    <!-- Styles and Scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -111,11 +116,11 @@
                     <ul class="space-y-2">
                         <li class="flex items-center">
                             <i class="fas fa-calendar-alt text-white mr-2"></i>
-                            <span class="text-white/80">Campeonato Brasileiro - 15/05</span>
+                            <span class="text-white/80">PGL Astana - 10/05</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-calendar-alt text-white mr-2"></i>
-                            <span class="text-white/80">Major Championship - 20/05</span>
+                            <span class="text-white/80">BLAST.tv Austin Major - 07/06</span>
                         </li>
                     </ul>
                 </div>
@@ -137,7 +142,7 @@
                         <a href="https://x.com/FURIA" class="text-white hover:text-white/80 transition duration-300">
                             <i class="fab fa-twitter text-2xl"></i>
                         </a>
-                        <a href="https://www.instagram.com/furia" class="text-white hover:text-white/80 transition duration-300">
+                        <a href="https://www.instagram.com/furiagg" class="text-white hover:text-white/80 transition duration-300">
                             <i class="fab fa-instagram text-2xl"></i>
                         </a>
                         <a href="https://www.furia.gg/" class="text-white hover:text-white/80 transition duration-300">
@@ -147,7 +152,7 @@
                 </div>
                 <div class="text-center md:text-right">
                     <h3 class="text-xl font-semibold mb-4 text-white">Desenvolvido por</h3>
-                    <p class="text-white/80">[Seu Nome]</p>
+                    <p class="text-white/80">Enzo Varella Pastore</p>
                 </div>
             </div>
             <div class="mt-8 text-center text-white/60">
