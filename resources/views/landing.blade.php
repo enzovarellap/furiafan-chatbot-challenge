@@ -156,7 +156,7 @@
                 </div>
             </div>
             <div class="mt-8 text-center text-white/60">
-                <p>&copy; 2024 FURIA Fan Chat. Todos os direitos reservados.</p>
+                <p>&copy; 2025 FURIA Fan Chat. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
