@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR" x-data="{ isMenuOpen: false, activeSection: 'home' }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FURIA Fan Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-black text-white font-sans">
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-black/90 backdrop-blur-sm z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <img src="/images/furia-logo.png" alt="FURIA Logo" class="h-8">
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition duration-300" @click="activeSection = 'home'">Home</a>
+                        <a href="#features" class="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition duration-300" @click="activeSection = 'features'">Recursos</a>
+                        <a href="#community" class="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition duration-300" @click="activeSection = 'community'">Comunidade</a>
+                        <a href="#contact" class="text-white hover:text-white/80 px-3 py-2 rounded-md text-sm font-medium transition duration-300" @click="activeSection = 'contact'">Contato</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="isMenuOpen = !isMenuOpen" class="text-white hover:text-white/80 focus:outline-none transition duration-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div x-show="isMenuOpen" class="md:hidden" x-transition>
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition duration-300" @click="isMenuOpen = false">Home</a>
+                <a href="#features" class="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition duration-300" @click="isMenuOpen = false">Recursos</a>
+                <a href="#community" class="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition duration-300" @click="isMenuOpen = false">Comunidade</a>
+                <a href="#contact" class="text-white hover:text-white/80 block px-3 py-2 rounded-md text-base font-medium transition duration-300" @click="isMenuOpen = false">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-6xl font-bold mb-6 text-white">
+                🔥 JUNTE-SE À FURIA
+            </h1>
+            <p class="text-xl mb-8 text-white/80">
+                Conecte-se com outros fãs e acompanhe partidas em tempo real.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://t.me/seu_bot" class="bg-white text-black hover:bg-white/90 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                    <i class="fab fa-telegram mr-2"></i> Acessar o Chat no Telegram
+                </a>
+                <a href="#features" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    Conhecer Recursos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Recursos do Chat</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/5 p-6 rounded-lg hover:transform hover:scale-105 transition duration-300 border border-white/10">
+                    <i class="fas fa-bolt text-white text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Atualizações em Tempo Real</h3>
+                    <p class="text-white/80">Receba notificações instantâneas sobre as partidas da FURIA.</p>
+                </div>
+                <div class="bg-white/5 p-6 rounded-lg hover:transform hover:scale-105 transition duration-300 border border-white/10">
+                    <i class="fas fa-users text-white text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Comunidade Ativa</h3>
+                    <p class="text-white/80">Interaja com outros fãs e compartilhe sua paixão pelo time.</p>
+                </div>
+                <div class="bg-white/5 p-6 rounded-lg hover:transform hover:scale-105 transition duration-300 border border-white/10">
+                    <i class="fas fa-chart-line text-white text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-white">Estatísticas Detalhadas</h3>
+                    <p class="text-white/80">Acompanhe o desempenho do time com dados e análises.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Nossa Comunidade</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white/5 p-6 rounded-lg border border-white/10">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Estatísticas da Comunidade</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white">10k+</div>
+                            <div class="text-white/80">Membros</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-white">24/7</div>
+                            <div class="text-white/80">Atividade</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-6 rounded-lg border border-white/10">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Próximos Eventos</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-calendar-alt text-white mr-2"></i>
+                            <span class="text-white/80">Campeonato Brasileiro - 15/05</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-calendar-alt text-white mr-2"></i>
+                            <span class="text-white/80">Major Championship - 20/05</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <footer id="contact" class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Contato</h3>
+                    <p class="text-white/80">Email: contato@furia.gg</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Redes Sociais</h3>
+                    <div class="flex justify-center space-x-4">
+                        <a href="https://x.com/FURIA" class="text-white hover:text-white/80 transition duration-300">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/furia" class="text-white hover:text-white/80 transition duration-300">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="https://www.furia.gg/" class="text-white hover:text-white/80 transition duration-300">
+                            <i class="fas fa-globe text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Desenvolvido por</h3>
+                    <p class="text-white/80">[Seu Nome]</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-white/60">
+                <p>&copy; 2024 FURIA Fan Chat. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
