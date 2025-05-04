@@ -18,25 +18,13 @@ class TelegramController extends Controller
                 'update' => $update->toArray()
             ]);
 
-            // Trata mensagens normais
             if ($update->isType('message')) {
                 $message = $update->getMessage();
                 $chatId = $message->getChat()->getId();
                 $text = trim($message->getText());
 
                 if ($text === '/start') {
-                    Telegram::sendMessage([
-                        'chat_id' => $chatId,
-                        'text' => "🔥 Bem-vindo ao FURIA Fan Chat!\n\nEscolha uma opção abaixo:",
-                        'reply_markup' => json_encode([
-                            'inline_keyboard' => [
-                                [['text' => 'Próximo Jogo', 'callback_data' => 'proximo_jogo']],
-                                [['text' => 'Elenco Atual', 'callback_data' => 'elenco']],
-                                [['text' => 'Últimos Resultados', 'callback_data' => 'ultimos_resultados']],
-                                [['text' => 'Votar MVP 🔥', 'callback_data' => 'votar_mvp']],
-                            ]
-                        ])
-                    ]);
+                    $this->sendStartMessage($chatId);
                     return response('OK', 200);
                 }
 
@@ -48,16 +36,11 @@ class TelegramController extends Controller
                     return response('OK', 200);
                 }
 
-                // Fallback para mensagens genéricas
-                Telegram::sendMessage([
-                    'chat_id' => $chatId,
-                    'text' => "Você disse: $text\nA FURIA te saúda! 🔥"
-                ]);
+                $this->sendStartMessage($chatId);
 
                 return response('OK', 200);
             }
 
-            // Trata callback dos botões inline
             if ($update->isType('callback_query')) {
                 $callback = $update->getCallbackQuery();
                 $data = $callback->getData();
@@ -65,25 +48,32 @@ class TelegramController extends Controller
 
                 switch ($data) {
                     case 'proximo_jogo':
-                        $this->sendProximoJogo($chatId);
+                        $this->sendNextGameInfo($chatId);
                         break;
 
                     case 'elenco':
                         Telegram::sendMessage([
                             'chat_id' => $chatId,
-                            'text' => "🎯 Elenco Atual da FURIA:\n- KSCERATO\n- yuurih\n- arT\n- chelo\n- FalleN"
+                            'text' => "🎯 Elenco Atual da FURIA:\n- KSCERATO\n- yuurih\n- molodoy\n- YEKINDAR\n- FalleN"
                         ]);
                         break;
 
                     case 'ultimos_resultados':
                         Telegram::sendMessage([
                             'chat_id' => $chatId,
-                            'text' => "📊 Últimos Resultados:\n- FURIA 2x1 MOUZ\n- FURIA 0x2 Heroic\n- FURIA 2x0 9z"
+                            'text' => "📊 Últimos Resultados:\n- FURIA 0x2 The MongolZ\n- FURIA 0x2 VirtusPro\n- FURIA 1x2 Complexity"
                         ]);
                         break;
 
                     case 'votar_mvp':
-                        $this->enviarEnqueteMVP($chatId);
+                        $this->sendMvpPoll($chatId);
+                        break;
+
+                    case 'receber_notificacoes':
+                        Telegram::sendMessage([
+                            'chat_id' => $chatId,
+                            'text' => "🔔 Você se inscreveu para receber notificações!"
+                        ]);
                         break;
                 }
 
@@ -96,28 +86,46 @@ class TelegramController extends Controller
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
             ]);
+
             return response('Error processing webhook', 500);
         }
     }
 
-    protected function sendProximoJogo($chatId)
+    protected function sendNextGameInfo($chatId)
     {
-        $dataJogo = Carbon::parse('2025-05-03 18:00:00');
+        $dataJogo = Carbon::parse('2025-05-10 10:00:00');
         $tempoRestante = now()->diffForHumans($dataJogo, ['parts' => 2, 'short' => true]);
+        $tempoRestante = str_replace('before', ' ', $tempoRestante);
 
         Telegram::sendMessage([
             'chat_id' => $chatId,
-            'text' => "🎮 Próximo Jogo:\nFURIA vs Team Liquid\n🗓️ 03/05 às 18h\nFormato: BO3\n⏳ Começa em $tempoRestante!"
+            'text' => "🎮 Próximo Jogo:\nFURIA vs The MongolZ\n🗓️ 10/05 às 10h\nFormato: BO3\n⏳ Começa em $tempoRestante!"
         ]);
     }
 
-    protected function enviarEnqueteMVP($chatId)
+    protected function sendMvpPoll($chatId)
     {
         Telegram::sendPoll([
             'chat_id' => $chatId,
             'question' => "🔥 Quem foi o MVP da última partida?",
-            'options' => ['FalleN', 'yuurih', 'KSCERATO', 'chelo', 'arT'],
+            'options' => ['FalleN', 'yuurih', 'KSCERATO', 'YEKINDAR', 'molodoy'],
             'is_anonymous' => false,
+        ]);
+    }
+    protected function sendStartMessage($chatId): void
+    {
+        Telegram::sendMessage([
+            'chat_id' => $chatId,
+            'text' => "🔥 Bem-vindo ao FURIA Fan Chat!\n\nEscolha uma opção abaixo:",
+            'reply_markup' => json_encode([
+                'inline_keyboard' => [
+                    [['text' => 'Próximo Jogo', 'callback_data' => 'proximo_jogo']],
+                    [['text' => 'Elenco Atual', 'callback_data' => 'elenco']],
+                    [['text' => 'Últimos Resultados', 'callback_data' => 'ultimos_resultados']],
+                    [['text' => 'Votar MVP 🔥', 'callback_data' => 'votar_mvp']],
+                    [['text' => 'Receber Notificações 🔔', 'callback_data' => 'receber_notificacoes']]
+                ]
+            ], JSON_THROW_ON_ERROR)
         ]);
     }
 }
