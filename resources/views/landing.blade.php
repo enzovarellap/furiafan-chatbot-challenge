@@ -19,7 +19,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
-                    <img src="/images/furia-logo.png" alt="FURIA Logo" class="h-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/pt/f/f9/Furia_Esports_logo.png" alt="FURIA Logo" class="h-8">
                 </div>
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
@@ -59,11 +59,11 @@
                 Conecte-se com outros fãs e acompanhe partidas em tempo real.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://t.me/seu_bot" class="bg-white text-black hover:bg-white/90 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                <a href="https://t.me/furiateam_fan_bot" target="_blank" class="bg-white text-black hover:bg-white/90 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
                     <i class="fab fa-telegram mr-2"></i> Acessar o Chat no Telegram
                 </a>
-                <a href="#features" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
-                    Conhecer Recursos
+                <a href="/register" class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                    Junte-se à Comunidade
                 </a>
             </div>
         </div>
